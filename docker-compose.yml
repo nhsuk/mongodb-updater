@@ -9,11 +9,11 @@ services:
       - .:/code
     environment:
       NODE_ENV: ${NODE_ENV}
-      JSON_FILE_URL: ${JSON_FILE_URL}
-      MONGO_HOST: ${MONGO_HOST}
+      JSON_FILE_URL: https://nhsukpharmacydataetl.blob.core.windows.net/etl-output/pharmacy-data.json
+      MONGO_HOST: mongo
       MONGO_PORT: ${MONGO_PORT}
-      MONGO_DB: ${MONGO_DB}
-      MONGO_COLLECTION: ${MONGO_COLLECTION}
+      MONGO_DB: services
+      MONGO_COLLECTION: pharmacies
       UPDATE_SCHEDULE: ${UPDATE_SCHEDULE}
 
   mongodb-updater:

@@ -1,7 +1,13 @@
+const requireEnv = require('require-environment-variables');
 const updateDatabase = require('./lib/updateDatabase');
 const schedule = require('node-schedule');
 const log = require('./lib/utils/logger');
 const config = require('./config/config');
+
+requireEnv(['JSON_FILE_URL']);
+requireEnv(['MONGO_HOST']);
+requireEnv(['MONGO_DB']);
+requireEnv(['MONGO_COLLECTION']);
 
 async function runUpdater() {
   // run on initial start, then on the schedule
