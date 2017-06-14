@@ -1,0 +1,33 @@
+version: '2.1'
+
+services:
+
+  base-app:
+    build:
+      context: .
+    volumes:
+      - .:/code
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      JSON_FILE_URL: ${JSON_FILE_URL}
+      MONGO_HOST: ${MONGO_HOST}
+      MONGO_PORT: ${MONGO_PORT}
+      MONGO_DB: ${MONGO_DB}
+      MONGO_COLLECTION: ${MONGO_COLLECTION}
+      UPDATE_SCHEDULE: ${UPDATE_SCHEDULE}
+
+  mongodb-updater:
+    extends:
+      service: base-app
+    volumes:
+      - mongodb-updater-node_modules:/code/node_modules
+    links:
+    - mongo-db:mongo
+
+  mongo-db:
+    image: mongo:3.4
+    ports:
+      - 27017:27017
+
+volumes:
+  mongodb-updater-node_modules:
