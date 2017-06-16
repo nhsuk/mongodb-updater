@@ -35,7 +35,7 @@ describe('Download ETL files', () => {
         // eslint-disable-next-line no-unused-expressions
         expect(fs.existsSync(filePath)).to.be.true;
         // eslint-disable-next-line no-unused-expressions
-        expect(fileHelper.loadJson(filePath)).to.be.defined;
+        expect(fileHelper.loadJson(filePath)).to.exist;
         done();
       }).catch(done);
   });
@@ -51,7 +51,7 @@ describe('Download ETL files', () => {
         expect(fs.existsSync(filePath)).to.be.true;
         const json = fileHelper.loadJson(filePath);
         // eslint-disable-next-line no-unused-expressions
-        expect(json).to.be.defined;
+        expect(json).to.exist;
         expect(json.length).to.be.greaterThan(0);
         done();
       }).catch(done);
@@ -67,7 +67,7 @@ describe('Download ETL files', () => {
         // eslint-disable-next-line no-unused-expressions
         expect(fs.existsSync(filePath)).to.be.true;
         // eslint-disable-next-line no-unused-expressions
-        expect(fileHelper.loadJson(filePath)).to.be.defined;
+        expect(fileHelper.loadJson(filePath)).to.exist;
         done();
       }).catch(done);
   });

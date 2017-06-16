@@ -1,5 +1,5 @@
 const chai = require('chai');
-const importData = require('../../lib/mongodb/importDataFromFile');
+const importDataFromFile = require('../../lib/mongodb/importDataFromFile');
 const DataImporter = require('../../lib/mongodb/dataImporter');
 const MongoWrapper = require('../../lib/mongodb/mongoWrapper');
 const config = require('../../config/config');
@@ -18,13 +18,13 @@ async function verifyCollection(expectedCount, name, done) {
 describe('importData', () => {
   it('should load the contents of a json file into mongodb', function test(done) {
     this.timeout(15000);
-    importData('./test/resources/sample-data.json', 'gps3', config.mongodb.connectionString)
+    importDataFromFile('./test/resources/sample-data.json', 'gps3', config.mongodb.connectionString)
       .then(() => verifyCollection(10, 'gps3', done)).catch(done);
   });
 
   it('should throw error for missing file', function test(done) {
     this.timeout(15000);
-    importData('noSuchFile.json', 'gps3', config.mongodb.connectionString)
+    importDataFromFile('noSuchFile.json', 'gps3', config.mongodb.connectionString)
       .then(() => expect.fail('should have thrown error')).catch(() => done());
   });
 });

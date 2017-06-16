@@ -12,8 +12,7 @@ services:
       JSON_FILE_URL: https://nhsukpharmacydataetl.blob.core.windows.net/etl-output/pharmacy-data.json
       MONGO_HOST: mongo
       MONGO_PORT: ${MONGO_PORT}
-      MONGO_DB: services
-      MONGO_COLLECTION: pharmacies
+      DB_CONFIG: pharmacy
       UPDATE_SCHEDULE: ${UPDATE_SCHEDULE}
 
   mongodb-updater:

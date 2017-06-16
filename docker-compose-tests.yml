@@ -15,6 +15,19 @@ services:
     links:
     - mongo-db:mongo
 
+  check-coverage:
+    extends:
+      file: docker-compose.yml
+      service: base-app
+    command: yarn check-coverage
+    volumes:
+      - mongodb-updater-tests-node_modules:/code/node_modules
+    environment:
+      NODE_ENV: test
+      SNYK_TOKEN: ${SNYK_TOKEN}
+    links:
+    - mongo-db:mongo
+
   travis-tests:
     extends:
       file: docker-compose.yml

@@ -1,0 +1,10 @@
+{
+  "db": "services",
+  "collection": "pharmacies",
+  "index": {
+    "keys": {
+      "location": "2dsphere"
+    }
+  },
+  "idKey": "identifier"
+}

@@ -6,6 +6,7 @@ services:
     environment:
       NODE_ENV: ${NODE_ENV}
       JSON_FILE_URL: ${JSON_FILE_URL}
+      DB_CONFIG: ${DB_CONFIG}
       MONGO_HOST: ${MONGO_HOST}
       MONGO_PORT: ${MONGO_PORT}
       MONGO_DB: ${MONGO_DB}
