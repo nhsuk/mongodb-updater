@@ -11,6 +11,7 @@ services:
       - mongodb-updater-tests-node_modules:/code/node_modules
     environment:
       NODE_ENV: test
+      KEY_FOR_MONGO_ID: name
       SNYK_TOKEN: ${SNYK_TOKEN}
     links:
     - mongo-db:mongo
