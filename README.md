@@ -51,3 +51,10 @@ the application is being run. This is best practice as described by
 | `UPDATE_SCHEDULE`                | time of day to run the update                                       | 0 7 * * *  (7 am)     |          |
 
 \* Either the `DB_CONFIG` must be set, or both the `MONGO_DB` and `MONGO_COLLECTION` variables must be set.
+
+## Architecture Decision Records
+ 
+This repo uses
+[Architecture Decision Records](http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions)
+to record architectural decisions for this project.
+They are stored in [doc/architecture/decisions](doc/architecture/decisions).
