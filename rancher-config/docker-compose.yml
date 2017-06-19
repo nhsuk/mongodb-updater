@@ -1,7 +1,7 @@
 version: '2'
 services:
 
-  profiles-db-updater:
+  mongodb-updater:
     image: nhsuk/mongodb-updater:${DOCKER_IMAGE_TAG}
     environment:
       NODE_ENV: ${NODE_ENV}
