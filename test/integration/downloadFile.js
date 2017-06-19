@@ -25,13 +25,15 @@ describe('Download ETL files', () => {
       }).catch(done);
   });
 
-  it('should not replace existing json file if the new json is invalid', (done) => {
+  it('should throw exception for invalid json', (done) => {
     nock(url)
       .get('')
       .reply(200, 'bad json');
 
     downloadFile(url, filename)
-      .then(() => {
+      .then(() => done('expected to throw exception'))
+      .catch((error) => {
+        expect(error.message).to.equal('Error retrieving file from http://somesite/test.json, Unexpected token b in JSON at position 0');
         // eslint-disable-next-line no-unused-expressions
         expect(fs.existsSync(filePath)).to.be.true;
         // eslint-disable-next-line no-unused-expressions
@@ -40,13 +42,15 @@ describe('Download ETL files', () => {
       }).catch(done);
   });
 
-  it('should not replace existing json file if the new json has much fewer records', (done) => {
+  it('should throw exception if the new json has much fewer records', (done) => {
     nock(url)
       .get('')
       .reply(200, '[]');
 
     downloadFile(url, filename)
-      .then(() => {
+      .then(() => done('expected to throw exception'))
+      .catch((error) => {
+        expect(error.message).to.equal('Error retrieving file from http://somesite/test.json, Total records has dropped from 1 to 0');
         // eslint-disable-next-line no-unused-expressions
         expect(fs.existsSync(filePath)).to.be.true;
         const json = fileHelper.loadJson(filePath);
@@ -57,13 +61,15 @@ describe('Download ETL files', () => {
       }).catch(done);
   });
 
-  it('should not replace existing json file if the url invalid', (done) => {
+  it('should throw exception if the url invalid', (done) => {
     nock(url)
       .get('')
       .replyWithError('download throws error');
 
     downloadFile(url, filename)
-      .then(() => {
+      .then(() => done('expected to throw exception'))
+      .catch((error) => {
+        expect(error.message).to.equal('Error retrieving file from http://somesite/test.json, download throws error');
         // eslint-disable-next-line no-unused-expressions
         expect(fs.existsSync(filePath)).to.be.true;
         // eslint-disable-next-line no-unused-expressions

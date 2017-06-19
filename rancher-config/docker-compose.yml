@@ -11,6 +11,7 @@ services:
       MONGO_PORT: ${MONGO_PORT}
       MONGO_DB: ${MONGO_DB}
       MONGO_COLLECTION: ${MONGO_COLLECTION}
+      CHANGE_THRESHOLD: ${CHANGE_THRESHOLD}
       UPDATE_SCHEDULE: ${UPDATE_SCHEDULE}
     labels:
       io.rancher.container.pull_image: always

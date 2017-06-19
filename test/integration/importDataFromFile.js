@@ -18,7 +18,7 @@ async function verifyCollection(expectedCount, name, done) {
 describe('importData', () => {
   it('should load the contents of a json file into mongodb', function test(done) {
     this.timeout(15000);
-    importDataFromFile('./test/resources/sample-data.json', 'gps3', config.mongodb.connectionString)
+    importDataFromFile('./test/resources/sample-data.json', 'gps3', config.mongodb.connectionString, dataChangeThreshold)
       .then(() => verifyCollection(10, 'gps3', done)).catch(done);
   });
 
