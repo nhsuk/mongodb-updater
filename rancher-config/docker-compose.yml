@@ -1,0 +1,17 @@
+version: '2'
+services:
+
+  mongodb-updater:
+    image: nhsuk/mongodb-updater:${DOCKER_IMAGE_TAG}
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      JSON_FILE_URL: ${JSON_FILE_URL}
+      DB_CONFIG: ${DB_CONFIG}
+      MONGO_HOST: ${MONGO_HOST}
+      MONGO_PORT: ${MONGO_PORT}
+      MONGO_DB: ${MONGO_DB}
+      MONGO_COLLECTION: ${MONGO_COLLECTION}
+      CHANGE_THRESHOLD: ${CHANGE_THRESHOLD}
+      UPDATE_SCHEDULE: ${UPDATE_SCHEDULE}
+    labels:
+      io.rancher.container.pull_image: always
