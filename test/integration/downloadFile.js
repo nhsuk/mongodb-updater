@@ -78,4 +78,3 @@ describe('Download ETL files', () => {
       }).catch(done);
   });
 });
-

@@ -1,6 +1,7 @@
-const requireEnv = require('require-environment-variables');
-const updateDatabase = require('./lib/updateDatabase');
 const schedule = require('node-schedule');
+const requireEnv = require('require-environment-variables');
+
+const updateDatabase = require('./lib/updateDatabase');
 const log = require('./lib/utils/logger');
 const config = require('./config/config');
 
