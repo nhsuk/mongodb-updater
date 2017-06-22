@@ -1,6 +1,5 @@
 const fs = require('fs');
 
-
 function loadDatabaseConfig(dbName) {
   if (dbName) {
     const path = `config/databases/${dbName}.json`;

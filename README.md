@@ -14,7 +14,7 @@ These can be used by setting the `DB_CONFIG` environment variable to the config 
 
 The available settings are `db`, `collection`, `index` and `idKey`.
 If the equivalent environment variables are set, they will override the `DB_CONFIG` settings.
-Note: the `index` may only bet set via a database config file, as it is a rich JSON object containing index keys and options.
+Note: the `index` may only be set via a database config file, as it is a rich JSON object containing index keys and options.
 
 The file download and database update will run on startup, then on a daily schedule while the container continues to run.
 
