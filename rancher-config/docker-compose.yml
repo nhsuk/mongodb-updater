@@ -1,16 +1,27 @@
 version: '2'
 services:
 
-  mongodb-updater:
+  mongodb-updater-pharmacy:
     image: nhsuk/mongodb-updater:${DOCKER_IMAGE_TAG}
     environment:
       NODE_ENV: ${NODE_ENV}
-      JSON_FILE_URL: ${JSON_FILE_URL}
-      DB_CONFIG: ${DB_CONFIG}
+      JSON_FILE_URL: https://nhsukpharmacydataetl.blob.core.windows.net/etl-output/pharmacy-data.json
+      DB_CONFIG: pharmacy
+      MONGO_HOST: pharmacy-db.pharmacy-db
+      MONGO_PORT: ${MONGO_PORT}
+      CHANGE_THRESHOLD: ${CHANGE_THRESHOLD}
+      UPDATE_SCHEDULE: ${UPDATE_SCHEDULE}
+    labels:
+      io.rancher.container.pull_image: always
+
+  mongodb-updater-profiles:
+    image: nhsuk/mongodb-updater:${DOCKER_IMAGE_TAG}
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      JSON_FILE_URL: https://nhsukgpdataetl.blob.core.windows.net/etl-output/gp-data-merged.json
+      DB_CONFIG: profiles
       MONGO_HOST: ${MONGO_HOST}
       MONGO_PORT: ${MONGO_PORT}
-      MONGO_DB: ${MONGO_DB}
-      MONGO_COLLECTION: ${MONGO_COLLECTION}
       CHANGE_THRESHOLD: ${CHANGE_THRESHOLD}
       UPDATE_SCHEDULE: ${UPDATE_SCHEDULE}
     labels:

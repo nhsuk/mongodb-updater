@@ -1,5 +1,9 @@
 version: '2'
 services:
-  mongodb-updater:
+  mongodb-updater-pharmacy:
+    scale: 1
+    start_on_create: true
+services:
+  mongodb-updater-profiles:
     scale: 1
     start_on_create: true
