@@ -1,5 +1,9 @@
 # Scheduled service to load data from a URL into a mongo database
 
+[![Build Status](https://travis-ci.org/nhsuk/mongodb-updater.svg?branch=master)](https://travis-ci.org/nhsuk/mongodb-updater)
+[![Coverage Status](https://coveralls.io/repos/github/nhsuk/mongodb-updater/badge.svg?branch=master)](https://coveralls.io/github/nhsuk/mongodb-updater?branch=master)
+[![Known Vulnerabilities](https://snyk.io/test/github/nhsuk/mongodb-updater/badge.svg)](https://snyk.io/test/github/nhsuk/mongodb-updater)
+
 The mongodb-updater is a dockerised application that will update a mongo database on a regular basis using JSON data from a URL.
 
 The  file specified in the `JSON_FILE_URL` environment variable will be used as the source of the database update if
