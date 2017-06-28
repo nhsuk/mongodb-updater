@@ -8,7 +8,7 @@ services:
   - docker
 
 before_install:
-  - pip install docker-compose==2.1
+  - pip install docker-compose==1.11.2
 
 script:
   - docker-compose -f docker-compose-tests.yml build travis-tests
