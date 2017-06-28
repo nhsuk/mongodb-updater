@@ -1,17 +1,28 @@
 version: '2'
 services:
 
-  mongodb-updater:
+  mongodb-updater-pharmacy:
     image: nhsuk/mongodb-updater:${DOCKER_IMAGE_TAG}
     environment:
       NODE_ENV: ${NODE_ENV}
-      JSON_FILE_URL: ${JSON_FILE_URL}
-      DB_CONFIG: ${DB_CONFIG}
-      MONGO_HOST: ${MONGO_HOST}
-      MONGO_PORT: ${MONGO_PORT}
-      MONGO_DB: ${MONGO_DB}
-      MONGO_COLLECTION: ${MONGO_COLLECTION}
-      CHANGE_THRESHOLD: ${CHANGE_THRESHOLD}
-      UPDATE_SCHEDULE: ${UPDATE_SCHEDULE}
+      JSON_FILE_URL: ${JSON_FILE_URL_PHARMACY}
+      DB_CONFIG: ${DB_CONFIG_PHARMACY}
+      MONGO_HOST: ${MONGO_HOST_PHARMACY}
+      MONGO_PORT: ${MONGO_PORT_PHARMACY}
+      CHANGE_THRESHOLD: ${CHANGE_THRESHOLD_PHARMACY}
+      UPDATE_SCHEDULE: ${UPDATE_SCHEDULE_PHARMACY}
+    labels:
+      io.rancher.container.pull_image: always
+
+  mongodb-updater-profiles:
+    image: nhsuk/mongodb-updater:${DOCKER_IMAGE_TAG}
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      JSON_FILE_URL: ${JSON_FILE_URL_PROFILES}
+      DB_CONFIG:  ${DB_CONFIG_PROFILES}
+      MONGO_HOST: ${MONGO_HOST_PROFILES}
+      MONGO_PORT: ${MONGO_PORT_PROFILES}
+      CHANGE_THRESHOLD: ${CHANGE_THRESHOLD_PROFILES}
+      UPDATE_SCHEDULE: ${UPDATE_SCHEDULE_PROFILES}
     labels:
       io.rancher.container.pull_image: always
