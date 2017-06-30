@@ -23,6 +23,7 @@ services:
         splunk-source: mongodb-updater-pharmacy
         splunk-verify-connection: "false"
         tag: '{{.ImageName}} {{.Name}} {{.FullID}}'
+        splunk-format: json
 
   mongodb-updater-profiles:
     image: nhsuk/mongodb-updater:${DOCKER_IMAGE_TAG}
@@ -46,3 +47,4 @@ services:
         splunk-source: mongodb-updater-profiles
         splunk-verify-connection: "false"
         tag: '{{.ImageName}} {{.Name}} {{.FullID}}'
+        splunk-format: json
