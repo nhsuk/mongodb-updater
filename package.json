@@ -4,8 +4,9 @@
   "description": "Retrieves JSON from the cloud and imports into mongodb",
   "main": "app.js",
   "scripts": {
-    "check-coverage": "istanbul check-coverage --config .istanbul.yml",
-    "generate-coverage": "yarn istanbul -- cover _mocha -- --recursive",
+    "coverage-check": "istanbul check-coverage --config .istanbul.yml",
+    "coverage-generate": "yarn istanbul -- cover _mocha -- --recursive",
+    "coverage-upload-coveralls": "cat ./coverage/lcov.info | coveralls",
     "git-hook": "yarn lint",
     "istanbul": "NODE_ENV=test istanbul",
     "lint": "eslint --ext .js,.json .",
@@ -14,12 +15,11 @@
     "prepush": "yarn git-hook && yarn snyk test",
     "start": "node app.js",
     "test": "NODE_ENV=test mocha --recursive test",
+    "test-ci": "yarn lint && yarn coverage-generate && yarn coverage-check && yarn coverage-upload-coveralls",
     "test-unit": "NODE_ENV=test mocha --recursive test/unit",
     "test-integration": "NODE_ENV=test mocha --recursive test/integration",
     "test-watch": "yarn test -- --watch --reporter min",
-    "test-watch-local": "MONGO_HOST=localhost yarn test -- --watch --reporter min",
-    "travis": "yarn lint && yarn generate-coverage && yarn check-coverage && yarn upload-coverage-coveralls",
-    "upload-coverage-coveralls": "cat ./coverage/lcov.info | coveralls"
+    "test-watch-local": "MONGO_HOST=localhost yarn test -- --watch --reporter min"
   },
   "keywords": [
     "mongodb",
