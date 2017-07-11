@@ -1,12 +1,11 @@
-# Scheduled service to load data from a URL into a mongo database
+# Scheduled service to load data from a URL into a MongoDB database
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/nhsuk/mongodb-updater.svg)](https://greenkeeper.io/)
-
 [![Build Status](https://travis-ci.org/nhsuk/mongodb-updater.svg?branch=master)](https://travis-ci.org/nhsuk/mongodb-updater)
 [![Coverage Status](https://coveralls.io/repos/github/nhsuk/mongodb-updater/badge.svg?branch=master)](https://coveralls.io/github/nhsuk/mongodb-updater?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/nhsuk/mongodb-updater/badge.svg)](https://snyk.io/test/github/nhsuk/mongodb-updater)
 
-The mongodb-updater is a dockerised application that will update a mongo database on a regular basis using JSON data from a URL.
+The mongodb-updater is a dockerised application that will update a MongoDB database on a regular basis using JSON data from a URL.
 
 The  file specified in the `JSON_FILE_URL` environment variable will be used as the source of the database update if
 it is available, is valid JSON, and if the total count has not dropped by a significant amount as described in `CHANGE_THRESHOLD` below.
@@ -15,7 +14,7 @@ The destination database is specified in the `MONGO_HOST`, `MONGO_PORT`, `MONGO_
 If a unique identifier in the source data should be used as the collection's ID, the `KEY_FOR_MONGO_ID` variable may be set.
 This will set the `_id` for each record inserted to the value of the key.
 
-To reduce the amount of enviroment variables required, common database configurations are stored in the `config/databases` folder.
+To reduce the amount of environment variables required, common database configurations are stored in the `config/databases` folder.
 These can be used by setting the `DB_CONFIG` environment variable to the config file name, i.e. `pharmacy`.
 
 The available settings are `db`, `collection`, `index` and `idKey`.
@@ -28,7 +27,7 @@ The time of day defaults to 7am, and can be changed via the `UPDATE_SCHEDULE` en
 The schedule is run using `node-schedule` which uses a cronlike syntax. Further details on node-schedule available [here](https://www.npmjs.com/package/node-schedule)
 Note: the container time is GMT and does not take account of daylight saving, you may need to subtract an hour from the time if it is currently BST.
 
-When updating the mongo database the new data will be inserted into a temporary collection and validated against the
+When updating the MongoDB database the new data will be inserted into a temporary collection and validated against the
 existing collection. Once validation passes the existing collection will be deleted and the temporary collection renamed
 to take its place.
 
@@ -47,11 +46,11 @@ the application is being run. This is best practice as described by
 | `NODE_ENV`                       | node environment                                                    | development           |          |
 | `LOG_LEVEL`                      | [log level](https://github.com/trentm/node-bunyan#levels)           | Depends on `NODE_ENV` |          |
 | `JSON_FILE_URL`                  | publicly available URL of JSON data                                 |                       | yes      |
-| `MONGO_HOST`                     | host name of mongo server                                           |                       | yes      |
+| `MONGO_HOST`                     | host name of MongoDB server                                         |                       | yes      |
 | `DB_CONFIG`                      | database configuration to read, currently only 'pharmacy' available |                       | *        |
-| `MONGO_PORT`                     | port of mongo server                                                | 27017                 |          |
-| `MONGO_DB`                       | mongo database to be updated                                        |                       | *        |
-| `MONGO_COLLECTION`               | mongo collection to be updated                                      |                       | *        |
+| `MONGO_PORT`                     | port of MongoDB server                                              | 27017                 |          |
+| `MONGO_DB`                       | MongoDB database to be updated                                      |                       | *        |
+| `MONGO_COLLECTION`               | MongoDB collection to be updated                                    |                       | *        |
 | `KEY_FOR_MONGO_ID`               | key in the source JSON data to use as the record's '_id'            |                       | no       |
 | `CHANGE_THRESHOLD`               | factor the data count can change by before erroring                 | 0.99                  |          |
 | `UPDATE_SCHEDULE`                | time of day to run the update                                       | 0 7 * * *  (7 am)     |          |
@@ -63,4 +62,4 @@ the application is being run. This is best practice as described by
 This repo uses
 [Architecture Decision Records](http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions)
 to record architectural decisions for this project.
-They are stored in [doc/architecture/decisions](doc/architecture/decisions).
+They are stored in [doc/adr](doc/adr).

@@ -2,7 +2,7 @@ version: '2.1'
 
 services:
 
-  tests:
+  test:
     extends:
       file: docker-compose.yml
       service: base-app
@@ -12,7 +12,6 @@ services:
     environment:
       NODE_ENV: test
       KEY_FOR_MONGO_ID: name
-      SNYK_TOKEN: ${SNYK_TOKEN}
     links:
     - mongo-db:mongo
 
@@ -20,20 +19,19 @@ services:
     extends:
       file: docker-compose.yml
       service: base-app
-    command: yarn check-coverage
+    command: yarn coverage-check
     volumes:
       - mongodb-updater-tests-node_modules:/code/node_modules
     environment:
       NODE_ENV: test
-      SNYK_TOKEN: ${SNYK_TOKEN}
     links:
     - mongo-db:mongo
 
-  travis-tests:
+  test-ci:
     extends:
       file: docker-compose.yml
       service: base-app
-    command: yarn run travis
+    command: yarn run test-ci
     user: root
     volumes:
       - mongodb-updater-tests-node_modules:/code/node_modules
@@ -41,7 +39,6 @@ services:
       COVERALLS_REPO_TOKEN: ${COVERALLS_REPO_TOKEN}
       NODE_ENV: test
       KEY_FOR_MONGO_ID: name
-      SNYK_TOKEN: ${SNYK_TOKEN}
       TRAVIS: ${TRAVIS}
       TRAVIS_BRANCH: ${TRAVIS_BRANCH}
       TRAVIS_COMMIT: ${TRAVIS_COMMIT}
