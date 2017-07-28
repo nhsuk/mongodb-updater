@@ -1,5 +1,6 @@
 # Scheduled service to load data from a URL into a MongoDB database
 
+[![GitHub Release](https://img.shields.io/github/release/nhsuk/mongodb-updater.svg)](https://github.com/nhsuk/mongodb-updater/releases/latest/)
 [![Greenkeeper badge](https://badges.greenkeeper.io/nhsuk/mongodb-updater.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/nhsuk/mongodb-updater.svg?branch=master)](https://travis-ci.org/nhsuk/mongodb-updater)
 [![Coverage Status](https://coveralls.io/repos/github/nhsuk/mongodb-updater/badge.svg?branch=master)](https://coveralls.io/github/nhsuk/mongodb-updater?branch=master)
