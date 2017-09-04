@@ -33,10 +33,11 @@ function getMongoDbConfig() {
   const collection = getCollection(dbConfig);
   const idKey = process.env.KEY_FOR_MONGO_ID || dbConfig.idKey;
   const index = dbConfig.index;
+  const connectionString = process.env.MONGO_CONNECTION_STRING || `mongodb://${host}:${port}/${db}`;
 
   const mongodb = {
     collection,
-    connectionString: `mongodb://${host}:${port}/${db}`,
+    connectionString,
     index,
     idKey,
   };
