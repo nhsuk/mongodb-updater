@@ -1,3 +1,7 @@
+# **DEPRECATED** - no longer actively maintained
+
+---
+
 # Scheduled service to load data from a URL into a MongoDB database
 
 [![GitHub Release](https://img.shields.io/github/release/nhsuk/mongodb-updater.svg)](https://github.com/nhsuk/mongodb-updater/releases/latest/)
